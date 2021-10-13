@@ -27,7 +27,7 @@ public class Main {
 
         List<String> conscript = persons.stream()        // 2. Призывники
                 .filter(person -> person.getSex().equals(Sex.MAN))
-                .filter(person -> person.getAge() > 18 && person.getAge() <27)
+                .filter(person -> person.getAge() >= 18 && person.getAge() <= 27)
                 .map(Person::getFamily)
                 .collect(Collectors.toList());
         System.out.println(conscript);
@@ -36,9 +36,9 @@ public class Main {
         List<String> workable = persons.stream()         // 3. Работоспособные
                 .filter(person -> person.getEducation().equals(Education.HIGHER))
                 .filter(person -> (person.getSex().equals(Sex.MAN)
-                        && person.getAge() > 18 && person.getAge() <65)
+                        && person.getAge() >= 18 && person.getAge() <= 65)
                         || (person.getSex().equals(Sex.WOMAN)
-                        && person.getAge() > 18 && person.getAge() <60))
+                        && person.getAge() >= 18 && person.getAge() <= 60))
                 .sorted(Comparator.comparing(Person::getFamily))
                 .map(Person::toString)
                 .collect(Collectors.toList());
